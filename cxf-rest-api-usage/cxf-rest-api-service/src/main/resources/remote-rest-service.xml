@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
+        xmlns:jaxrs="http://cxf.apache.org/blueprint/jaxrs"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="
+            http://www.osgi.org/xmlns/blueprint/v1.0.0
+                http://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd
+            http://cxf.apache.org/blueprint/jaxrs
+                http://cxf.apache.org/schemas/blueprint/jaxrs.xsd
+            http://aries.apache.org/blueprint/xmlns/blueprint-ext/v1.2.0
+                http://aries.apache.org/schemas/blueprint-ext/blueprint-ext-1.2.xsd
+    ">
+
+    <jaxrs:server id="restService" address="/">
+        <jaxrs:serviceBeans>
+			<!-- Reference to impl class -->
+            <bean class="org.dsavina.rest.api.service.impl.RestApiServiceImpl">
+            </bean>
+        </jaxrs:serviceBeans>
+        <jaxrs:providers>
+            <bean class="com.fasterxml.jackson.jaxrs.json.JacksonJsonProvider" />
+			<!-- Here should be exception mapper if required -->
+            <!-- bean class="org.example.server.rest.exception.RestServiceExceptionMapper"/ -->
+        </jaxrs:providers>
+    </jaxrs:server>
+
+</blueprint>
