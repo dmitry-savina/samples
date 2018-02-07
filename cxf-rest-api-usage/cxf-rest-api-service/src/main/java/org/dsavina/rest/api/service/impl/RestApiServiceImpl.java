@@ -2,6 +2,7 @@ package org.dsavina.rest.api.service.impl;
 
 import java.util.ArrayList;
 import java.util.List;
+import javax.ws.rs.core.Response;
 
 import org.dsavina.rest.api.resources.User;
 import org.dsavina.rest.api.service.RestApiService;
@@ -17,5 +18,11 @@ public class RestApiServiceImpl implements RestApiService {
             usersList.add(ug.generateUser());
         }
         return usersList;
+    }
+
+    @Override
+    public Response createUsers(List<User> users) {
+        System.out.println("==== get the list of users ==== count" + users.size());
+        return Response.ok().build();
     }
 }
